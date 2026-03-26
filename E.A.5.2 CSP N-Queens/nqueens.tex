@@ -1,0 +1,118 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{listings}
+\geometry{margin=2.5cm}
+
+\lstdefinelanguage{MiniZinc}{
+  morekeywords={int,set,of,array,var,constraint,include,solve,satisfy,output,show},
+  sensitive=true,
+  morecomment=[l]{\%},
+  morestring=[b]"
+}
+
+\lstset{
+  language=MiniZinc,
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{teal!70!black}\itshape,
+  stringstyle=\color{orange!70!black},
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  stepnumber=1,
+  numbersep=8pt,
+  showstringspaces=false,
+  frame=single,
+  breaklines=true
+}
+
+\title{CSP: n-Queens}
+\date{}
+
+\begin{document}
+\maketitle
+
+Si vuole trovare, per un dato intero $n>3$, una disposizione di $n$ regine su una
+scacchiera $n\times n$ tale che nessuna coppia di regine sia in conflitto (stessa riga,
+stessa colonna, stessa diagonale).
+
+\subsection*{1.1 Modellazione}
+
+Una formulazione CSP ad alto livello è la seguente.
+
+\paragraph{Variabili}
+Definiamo una variabile per ogni colonna:
+\[
+X = \{x_1, x_2, \dots, x_n\},
+\]
+dove $x_i$ rappresenta la riga in cui è posizionata la regina nella colonna $i$.
+
+\paragraph{Domini}
+\[
+\forall i \in \{1,\dots,n\}:\quad D(x_i)=\{1,\dots,n\}.
+\]
+
+\paragraph{Vincoli}
+\[
+\begin{aligned}
+C=\{\,&\text{alldifferent}(x_1,\dots,x_n),\\
+      &\text{alldifferent}(x_1+1,\dots,x_n+n),\\
+      &\text{alldifferent}(x_1-1,\dots,x_n-n)\,\}.
+\end{aligned}
+\]
+
+Il primo vincolo impone che due regine non stiano sulla stessa riga.
+
+Il vincolo di colonna è già soddisfatto implicitamente (per costruzione).
+
+I vincoli sulle diagonali sono modellati con due \texttt{alldifferent}:
+Due regine nelle posizioni $(i,x_i)$ e $(j,x_j)$ sono sulla stessa diagonale
+principale se e solo se $x_i-i=x_j-j$, e sulla stessa diagonale secondaria se e solo se
+$x_i+i=x_j+j$. 
+Quindi imporre \texttt{alldifferent} su tutti i valori $x_i-i$ e $x_i+i$
+elimina entrambi i tipi di conflitto diagonale.
+
+\subsection*{1.2 Istanziazione per $n=5$}
+
+Si ottiene il CSP $(X,D,C)$:
+
+\[
+X=\{x_1,x_2,x_3,x_4,x_5\}.
+\]
+
+\[
+D(x_1)=D(x_2)=D(x_3)=D(x_4)=D(x_5)=\{1,2,3,4,5\}.
+\]
+
+\[
+\begin{aligned}
+C=\{\,&\text{alldifferent}(x_1,x_2,x_3,x_4,x_5),\\
+      &\text{alldifferent}(x_1+1,x_2+2,x_3+3,x_4+4,x_5+5),\\
+      &\text{alldifferent}(x_1-1,x_2-2,x_3-3,x_4-4,x_5-5)\,\}.
+\end{aligned}
+\]
+
+\newpage
+
+\subsection*{1.3 Codifica in MiniZinc}
+
+\begin{lstlisting}
+include "alldifferent.mzn";
+int: n;
+array[1..n] of var 1..n: q;
+
+constraint alldifferent(q);
+constraint alldifferent([q[i] + i | i in 1..n]);
+constraint alldifferent([q[i] - i | i in 1..n]);
+
+solve satisfy;
+
+output [show(q)];
+\end{lstlisting}
+
+
+\end{document}
