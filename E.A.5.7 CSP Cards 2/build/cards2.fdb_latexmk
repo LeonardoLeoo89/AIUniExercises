@@ -1,16 +1,14 @@
 # Fdb version 4
-["pdflatex"] 1778697535.52308 "/home/leopr/IdeaProjects/AIUniExercises/E.A.5.6 CSP Cards/cards.tex" "build/cards.pdf" "cards" 1778697535.84742 0
+["pdflatex"] 1778702787.39081 "/home/leopr/IdeaProjects/AIUniExercises/E.A.5.7 CSP Cards 2/cards2.tex" "build/cards2.pdf" "cards2" 1778702787.71332 0
   "/home/leopr/.texlive/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1095.600pk" 1778518358.60003 28952 91ae7ae24c21de495d4961f2a8f0cc3c ""
   "/home/leopr/.texlive/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk" 1778518358.86304 31928 d2fde0d376d68dd120f2a022c931e89e ""
-  "/home/leopr/.texlive/texmf-var/fonts/pk/ljfour/jknappen/ec/ecit1000.600pk" 1778521954.24736 26704 e92fa7f7987b4ba0903caacd3c63cf42 ""
   "/home/leopr/.texlive/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0600.600pk" 1778518358.08217 14860 945d115f96dff8e8805b3cca84d0db0f ""
   "/home/leopr/.texlive/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.600pk" 1778518359.11704 26208 e5f11509949cd850babf426fe937880b ""
   "/home/leopr/.texlive/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk" 1778518359.37405 42496 77b003b79d71e57bba480f3dd06f6777 ""
   "/home/leopr/.texlive/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk" 1778518357.81037 20008 91d44811db3537fad7c3ea92f6c0806f ""
-  "/home/leopr/IdeaProjects/AIUniExercises/E.A.5.6 CSP Cards/cards.tex" 1778687374.23229 3537 4335a0043b6ac5cd0a150f8a9aeaded8 ""
+  "/home/leopr/IdeaProjects/AIUniExercises/E.A.5.7 CSP Cards 2/cards2.tex" 1778702787.19267 4583 60bdbdd2c40da046b68b9d80ce49a10f ""
   "/usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecbx1095.tfm" 1775415801 3584 21b378cca2e40816b0e6d74a4dc98f04 ""
   "/usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecbx1200.tfm" 1775415801 3584 402da0b29eafbad07963b1224b222f18 ""
-  "/usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecit1000.tfm" 1775415801 1536 34ad639b0caa1b405dc14b9703b4e5b9 ""
   "/usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecrm0600.tfm" 1775415801 3584 291a5713401683441e0a8c8f4417b17b ""
   "/usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecrm0800.tfm" 1775415801 3584 49064b465390a8e316a3c8417a050403 ""
   "/usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecrm1000.tfm" 1775415801 3584 adb004a0c8e7c46ee66cad73671f37b4 ""
@@ -43,7 +41,6 @@
   "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1775415801 35752 024fb6c41858982481f6968b5fc26508 ""
   "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb" 1775415801 32726 0a1aea6fcd6468ee2cf64d891f5c43c8 ""
   "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1775415801 32569 5e5ddc8df908dea60932f3c484a54c0d ""
-  "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb" 1775415801 32626 4f5c1b83753b1dd3a97d1b399a005b4b ""
   "/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1775415801 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/usr/share/texmf-dist/tex/generic/babel-italian/italian.ldf" 1775415801 11544 73e1a196f9cb1197c32a45aa6e9ead35 ""
   "/usr/share/texmf-dist/tex/generic/babel/babel.sty" 1775415801 147019 f2ca437186bfeb562e1066ad59426a04 ""
@@ -86,10 +83,10 @@
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1775415801 43569 fd570f2fa160877d211e859f687312ba ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1778518338 30070 2c390b00126b1036e8876b6c3ea4d747 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1778518337 2329481 8b828566d138c696f3e51e55774667b9 ""
-  "build/cards.aux" 1778697535.79195 419 aeb93b4d712bd43c5c329e0c9adcd493 "pdflatex"
-  "cards.tex" 1778687374.23229 3537 4335a0043b6ac5cd0a150f8a9aeaded8 ""
+  "build/cards2.aux" 1778702787.66231 666 bf0d0a005bab4d13ae711e53a2d89261 "pdflatex"
+  "cards2.tex" 1778702787.19267 4583 60bdbdd2c40da046b68b9d80ce49a10f ""
   (generated)
-  "build/cards.aux"
-  "build/cards.log"
-  "build/cards.pdf"
+  "build/cards2.aux"
+  "build/cards2.log"
+  "build/cards2.pdf"
   (rewritten before read)
