@@ -1,0 +1,144 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{listings}
+\geometry{margin=2cm}
+
+\lstdefinelanguage{MiniZinc}{
+  morekeywords={int,set,of,array,var,constraint,include,solve,satisfy,output,show},
+  sensitive=true,
+  morecomment=[l]{\%},
+  morestring=[b]"
+}
+
+\lstset{
+  language=MiniZinc,
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{teal!70!black}\itshape,
+  stringstyle=\color{orange!70!black},
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  stepnumber=1,
+  numbersep=8pt,
+  showstringspaces=false,
+  frame=single,
+  breaklines=true
+}
+
+\title{CSP: Backtracking e Propagazione}
+\date{}
+
+\begin{document}
+\maketitle
+
+\subsection*{1.1 Esecuzione su CSP fornito}
+
+Il CSP fornito è il seguente:
+
+\textbf{Variabili:} $X = \{X_1, \dots,  X_5\}$
+
+
+\textbf{Domini:} $D_1 = \dots = D_5 = \{1, 2, 3, 4, 5\}$
+
+
+\textbf{Vincoli:} $C = \{C_1, \dots, C_5\}$, dove:
+
+\begin{itemize}
+  \item $C_1: X_1 > X_3$
+  \item $C_2: X_2 \leq X_3$
+  \item $C_3: X_3^2 + X_4^2 \leq 15$
+  \item $C_4: X_5 \geq 3$
+  \item $C_5: X_1 + X_5 \geq 3$
+\end{itemize}
+
+Dopo l'esecuzione di \texttt{GAC-3}, i domini sono:
+\[
+D(X_1) = \{2, 3, 4, 5\}, \quad D(X_2) = \{1, 2, 3\}, \quad D(X_3) = \{1, 2, 3\}, \quad D(X_4) = \{1, 2, 3\}, \quad D(X_5) = \{3, 4, 5\}.
+\]
+
+\subsection*{1.2 Esecuzione di Backtracking}
+\noindent Iterazione 1:
+\begin{itemize}
+  \item Variabili non assegnate: {$X_1, X_2, X_3, X_4, X_5$}
+  \item Scelta variabile:
+  \subitem (MRV): tra $X_2, X_3, X_4, X_5$ (dominio di dimensione 3)
+  \subitem (Max-Degree): $X_3$ (coinvolta in 3 vincoli)
+  \item Scelta valore (LCV): tra $1, 2, 3$
+  \subitem $1$: 
+  \subsubitem $C_1$: riduce $D(X_1)$ a $\{2, 3, 4, 5\}$ (nessuna riduzione)
+  \subsubitem $C_2$: riduce $D(X_2)$ a $\{1\}$ (2 rimossi: 2, 3)
+  \subsubitem $C_3$: riduce $D(X_4)$ a $\{1, 2, 3\}$ (nessuna riduzione)
+
+  \subitem $2$: 
+  \subsubitem $C_1$: riduce $D(X_1)$ a $\{3, 4, 5\}$ (1 rimossi: 2)
+  \subsubitem $C_2$: riduce $D(X_2)$ a $\{1, 2\}$ (1 rimossi: 3)
+  \subsubitem $C_3$: riduce $D(X_4)$ a $\{1, 2, 3\}$ (nessuna riduzione)
+ 
+  \subitem $3$:
+  \subsubitem $C_1$: riduce $D(X_1)$ a $\{4, 5\}$ (2 rimossi: 2, 3)
+  \subsubitem $C_2$: riduce $D(X_2)$ a $\{1, 2, 3\}$ (nessuna riduzione)
+  \subsubitem $C_3$: riduce $D(X_4)$ a $\{1, 2\}$ (1 rimossi: 3)
+  \item Assegnazione: 1 e 2 sono meno vincolanti, scegliamo 1 per ordinamento lessicografico
+  \item $X_3 = 1$
+  \item Propagazione (FC): Aggiorniamo i domini: 
+  \subitem $D(X_1) = \{2, 3, 4, 5\}, D(X_2) = \{1\}, D(X_4) = \{1, 2, 3\}, D(X_5) = \{3, 4, 5\}$    
+
+\end{itemize}
+
+
+\noindent Iterazione 2:
+\begin{itemize}
+  \item Variabili non assegnate: {$X_1, X_2, X_4, X_5$}
+  \item Scelta variabile:
+  \subitem (MRV): $X_2$ (dominio di dimensione 1)
+  \item $X_2 = 1$
+  \item Propagazione (FC): Aggiorniamo i domini: Nessun dominio viene ridotto.
+\end{itemize}
+
+\noindent Iterazione 3:
+\begin{itemize}
+  \item Variabili non assegnate: {$X_1, X_4, X_5$}
+  \item Scelta variabile:
+  \subitem (MRV): tra $X_4, X_5$ (dominio di dimensione 3)
+  \subitem (Max-Degree): $X_5$ (coinvolta in 2 vincoli)
+  \item Scelta valore (LCV): tra $3, 4, 5$
+  \subitem $3$:
+  \subsubitem $C_5$: riduce $D(X_1)$ a $\{2, 3, 4, 5\}$ (nessuna riduzione)
+  \subitem $4$:
+  \subsubitem $C_5$: riduce $D(X_1)$ a $\{2, 3, 4, 5\}$ (nessuna riduzione)
+  \subitem $5$:
+  \subsubitem $C_5$: riduce $D(X_1)$ a $\{2, 3, 4, 5\}$ (nessuna riduzione)
+  \item Assegnazione: 3, 4 e 5 sono ugualmente vincolanti, scegliamo 3 per ordinamento lessicografico
+  \item $X_5 = 3$
+  \item Propagazione (FC): Aggiorniamo i domini: Nessun dominio viene ridotto.
+\end{itemize}
+
+\noindent Iterazione 4:
+\begin{itemize}
+  \item Variabili non assegnate: {$X_1, X_4$}
+  \item Scelta variabile:
+  \subitem (MRV): $X_4$ (dominio di dimensione 3)
+  \item Scelta valore (LCV): tra $1, 2, 3$: $X_4$ non è connessa a nessun vincolo che coinvolge $X_1$, quindi tutti i valori sono ugualmente vincolanti. Scegliamo 1 per ordinamento lessicografico.
+  \item $X_4 = 1$
+  \item Propagazione (FC): Aggiorniamo i domini: Nessun dominio viene ridotto.
+\end{itemize}
+
+\noindent Iterazione 5:
+\begin{itemize}
+  \item Variabili non assegnate: {$X_1$}
+  \item Scelta variabile: $X_1$ (unica variabile rimasta)
+  \item Scelta valore (LCV): tra $2, 3, 4, 5$: Per ordinamento lessicografico, scegliamo 2
+  \item $X_1 = 2$
+\end{itemize}
+
+\textbf{Soluzione trovata:} $X_1 = 2, X_2 = 1, X_3 = 1, X_4 = 1, X_5 = 3$.
+
+
+\end{document}
