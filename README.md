@@ -13,3 +13,5 @@ Collection of exercises for Artificial Intelligence course
 * [`E.A.5.1 Steepest Descent`](E.A.5.1%20Steepest%20Descent/): Exercise on steepest-descent local search algorithm
 
 * [`E.A.5.5 CSP Backtracking`](E.A.5.5%20CSP%20Backtracking/): Exercise on backtracking
+
+* [`E.A.5.6 CSP Cards`](E.A.5.5%20CSP%20Cards/): Cards problem modeled as a CSP and implemented in Minizinc
