@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=pdflatex 2026.5.11)  14 MAY 2026 19:56
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=pdflatex 2026.5.11)  14 MAY 2026 20:02
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -307,7 +307,7 @@ Overfull \hbox (14.69095pt too wide) detected at line 70
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
-Overfull \hbox (32.30495pt too wide) detected at line 135
+Overfull \hbox (217.02562pt too wide) detected at line 135
 [] \OMS/cmsy/m/n/10.95 ) :[]\OT1/cmr/m/n/10.95 ([]\OML/cmm/m/it/10.95 ; []\OT1/cmr/m/n/10.95 )
  []
 
@@ -326,7 +326,7 @@ Here is how much of TeX's memory you used:
  14 hyphenation exceptions out of 8191
  57i,6n,65p,316b,266s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </home/leopr/.texlive/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk> </home/leopr/.texlive/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1095.600pk> </home/leopr/.texlive/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/leopr/.texlive/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1095.600pk> </home/leopr/.texlive/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.600pk> </home/leopr/.texlive/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/leopr/.texlive/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on build/folstudentiansiosi.pdf (3 pages, 93399 bytes).
+Output written on build/folstudentiansiosi.pdf (3 pages, 94020 bytes).
 PDF statistics:
  194 PDF objects out of 1000 (max. 8388607)
  54 compressed objects within 1 object stream

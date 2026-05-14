@@ -75,14 +75,14 @@ La formula che modella l'affermazione è:
 
 Consideriamo l'interpretazione $M$ con:
 \begin{itemize}
-  \item Dominio = $\{\mathrm{pino}, \mathrm{AI}\}$
+  \item Dominio = $\{\mathrm{Giovanni}, \mathrm{Sicurezza}\}$
 \end{itemize}
 
 \paragraph{Interpretazione}
 \begin{itemize}
   \item $\mathrm{Studente}^M = \varnothing$
-  \item $\mathrm{Esame}^M = \{\mathrm{AI}\}$
-  \item $\mathrm{Ansioso}^M = \{\mathrm{pino}\}$
+  \item $\mathrm{Esame}^M = \{\mathrm{Sicurezza}\}$
+  \item $\mathrm{Ansioso}^M = \{\mathrm{Giovanni}\}$
   \item $\mathrm{StudiaProgramma}^M = \varnothing$
   \item $\mathrm{Supera}^M = \varnothing$
 \end{itemize}
@@ -103,41 +103,41 @@ Pertanto, $M \models \phi$.
 
 Consideriamo l'interpretazione $I$ con:
 \begin{itemize}
-  \item Dominio = $\{\mathrm{pino}, \mathrm{AI}\}$
+  \item Dominio = $\{\mathrm{Giovanni}, \mathrm{Sicurezza}\}$
 \end{itemize}
 
 \paragraph{Interpretazione}
 \begin{itemize}
-  \item $\mathrm{Studente}^I = \{\mathrm{pino}\}$
-  \item $\mathrm{Esame}^I = \{\mathrm{AI}\}$
-  \item $\mathrm{Ansioso}^I = \{\mathrm{pino}\}$
+  \item $\mathrm{Studente}^I = \{\mathrm{Giovanni}\}$
+  \item $\mathrm{Esame}^I = \{\mathrm{Sicurezza}\}$
+  \item $\mathrm{Ansioso}^I = \{\mathrm{Giovanni}\}$
   \item $\mathrm{StudiaProgramma}^I = \varnothing$
-  \item $\mathrm{Supera}^I = \{(\mathrm{pino}, \mathrm{AI})\}$
+  \item $\mathrm{Supera}^I = \{(\mathrm{Giovanni}, \mathrm{Sicurezza})\}$
 \end{itemize}
 
 \paragraph{Verifica che $I \not\models \phi$}
 
-Per $x=\mathrm{pino}$ e $y=\mathrm{AI}$ si ha:
+Per $x=\mathrm{Giovanni}$ e $y=\mathrm{Sicurezza}$ si ha:
 \[
 \left(
-  \mathrm{Studente}(\mathrm{pino})
+  \mathrm{Studente}(\mathrm{Giovanni})
   \land
-  \mathrm{Esame}(\mathrm{AI})
+  \mathrm{Esame}(\mathrm{Sicurezza})
   \land
   \left(
-    \mathrm{Ansioso}(\mathrm{pino})
+    \mathrm{Ansioso}(\mathrm{Giovanni})
     \lor
-    \neg \mathrm{StudiaProgramma}(\mathrm{pino},\mathrm{AI})
+    \neg \mathrm{StudiaProgramma}(\mathrm{Giovanni},\mathrm{Sicurezza})
   \right)
 \right)
 \Rightarrow
-\neg \mathrm{Supera}(\mathrm{pino},\mathrm{AI})
+\neg \mathrm{Supera}(\mathrm{Giovanni},\mathrm{Sicurezza})
 \]
 L'antecedente dell'implicazione è vero, ma il conseguente
 \[
-\neg \mathrm{Supera}(\mathrm{pino},\mathrm{AI})
+\neg \mathrm{Supera}(\mathrm{Giovanni},\mathrm{Sicurezza})
 \]
-è falso poiché $(\mathrm{pino}, \mathrm{AI}) \in \mathrm{Supera}^I$. Pertanto l'implicazione è falsa.
+è falso poiché $(\mathrm{Giovanni}, \mathrm{Sicurezza}) \in \mathrm{Supera}^I$. Pertanto l'implicazione è falsa.
 
 Pertanto, $I \not\models \phi$.
 

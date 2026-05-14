@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1778781404.24775 "/home/leopr/IdeaProjects/AIUniExercises/E.B.1.1 FOL Studenti Ansiosi modelling/folstudentiansiosi.tex" "build/folstudentiansiosi.pdf" "folstudentiansiosi" 1778781404.49289 0
+["pdflatex"] 1778781727.35977 "/home/leopr/IdeaProjects/AIUniExercises/E.B.1.1 FOL Studenti Ansiosi modelling/folstudentiansiosi.tex" "build/folstudentiansiosi.pdf" "folstudentiansiosi" 1778781727.66409 0
   "/home/leopr/.texlive/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1095.600pk" 1778518358.60003 28952 91ae7ae24c21de495d4961f2a8f0cc3c ""
   "/home/leopr/.texlive/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk" 1778518358.86304 31928 d2fde0d376d68dd120f2a022c931e89e ""
   "/home/leopr/.texlive/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk" 1778776125.23372 40112 bc2ddce3228c96817dc3e3b494fbd88e ""
@@ -7,7 +7,7 @@
   "/home/leopr/.texlive/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk" 1778518359.37405 42496 77b003b79d71e57bba480f3dd06f6777 ""
   "/home/leopr/.texlive/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1095.600pk" 1778780976.24156 35180 e8a226ea939fc9fbcea6b74c8a2e4a1e ""
   "/home/leopr/.texlive/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk" 1778529620.31758 12644 7d3b72d9592ac45790a884e4f2808359 ""
-  "/home/leopr/IdeaProjects/AIUniExercises/E.B.1.1 FOL Studenti Ansiosi modelling/folstudentiansiosi.tex" 1778781404.05854 3794 d90a70fcf8a1c70bc4c632663cf05086 ""
+  "/home/leopr/IdeaProjects/AIUniExercises/E.B.1.1 FOL Studenti Ansiosi modelling/folstudentiansiosi.tex" 1778781726.98455 3923 7c49e899ca1097a972850684fce9a7a8 ""
   "/usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecbx1095.tfm" 1775415801 3584 21b378cca2e40816b0e6d74a4dc98f04 ""
   "/usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecbx1200.tfm" 1775415801 3584 402da0b29eafbad07963b1224b222f18 ""
   "/usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecbx1440.tfm" 1775415801 3584 13049b61b922a28b158a38aeff75ee9b ""
@@ -83,8 +83,8 @@
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1775415801 43569 fd570f2fa160877d211e859f687312ba ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1778518338 30070 2c390b00126b1036e8876b6c3ea4d747 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1778518337 2329481 8b828566d138c696f3e51e55774667b9 ""
-  "build/folstudentiansiosi.aux" 1778781404.45355 735 1a6dde828b3357a51266704065cd264e "pdflatex"
-  "folstudentiansiosi.tex" 1778781404.05854 3794 d90a70fcf8a1c70bc4c632663cf05086 ""
+  "build/folstudentiansiosi.aux" 1778781727.61313 735 1a6dde828b3357a51266704065cd264e "pdflatex"
+  "folstudentiansiosi.tex" 1778781726.98455 3923 7c49e899ca1097a972850684fce9a7a8 ""
   (generated)
   "build/folstudentiansiosi.aux"
   "build/folstudentiansiosi.log"
