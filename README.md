@@ -17,3 +17,5 @@ Collection of exercises for Artificial Intelligence course
 * [`E.A.5.6 CSP Cards`](E.A.5.6%20CSP%20Cards/): Cards problem modeled as a CSP and implemented in Minizinc
 
 * [`E.A.5.7 CSP Cards 2`](E.A.5.7%20CSP%20Cards%202/): Cards 2 problem modeled as a CSP and implemented in Minizinc
+
+* [`E.A.6.5 Schur Lemma`](E.A.6.5%20SAT%20Schur%20Lemma%20/): Schur's lemma problem modeled as SAT 
