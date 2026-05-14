@@ -1,0 +1,145 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{listings}
+\geometry{margin=2.5cm}
+
+\lstdefinelanguage{MiniZinc}{
+  morekeywords={int,set,of,array,var,constraint,include,solve,satisfy,output,show},
+  sensitive=true,
+  morecomment=[l]{\%},
+  morestring=[b]"
+}
+
+\lstset{
+  language=MiniZinc,
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{teal!70!black}\itshape,
+  stringstyle=\color{orange!70!black},
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  stepnumber=1,
+  numbersep=8pt,
+  showstringspaces=false,
+  frame=single,
+  breaklines=true
+}
+
+\title{FOL: Studenti Ansiosi}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Problema: Studenti Ansiosi}
+Modellare mediante una formula $\phi$ in logica del primo ordine la seguente affermazione:
+
+\textit{Nessuno studente supererà un qualunque esame se è ansioso o non ne studia il programma}
+
+\subsection*{1.1 Modellazione}
+
+
+\paragraph{Predicati}
+\begin{itemize}
+  \item $\mathrm{Studente}(x)$: $x$ è uno studente
+  \item $\mathrm{Esame}(y)$: $y$ è un esame
+  \item $\mathrm{Ansioso}(x)$: $x$ è ansioso
+  \item $\mathrm{StudiaProgramma}(x, y)$: $x$ studia il programma dell'esame $y$
+  \item $\mathrm{Supera}(x, y)$: $x$ supera l'esame $y$
+\end{itemize}
+
+\paragraph{Formula}
+
+La formula che modella l'affermazione è:
+\[
+\phi = \forall x \, \forall y \,
+\left(
+  \left(
+    \mathrm{Studente}(x) \land \mathrm{Esame}(y) \land
+    \left( \mathrm{Ansioso}(x) \lor \neg \mathrm{StudiaProgramma}(x, y) \right)
+  \right)
+\Rightarrow
+\neg \mathrm{Supera}(x, y)
+\right)
+\]
+
+\newpage
+
+\subsection*{1.2 Modello $M$ di $\phi$}
+
+Consideriamo l'interpretazione $M$ con:
+\begin{itemize}
+  \item Dominio = $\{\mathrm{pino}, \mathrm{AI}\}$
+\end{itemize}
+
+\paragraph{Interpretazione}
+\begin{itemize}
+  \item $\mathrm{Studente}^M = \varnothing$
+  \item $\mathrm{Esame}^M = \{\mathrm{AI}\}$
+  \item $\mathrm{Ansioso}^M = \{\mathrm{pino}\}$
+  \item $\mathrm{StudiaProgramma}^M = \varnothing$
+  \item $\mathrm{Supera}^M = \varnothing$
+\end{itemize}
+
+\paragraph{Verifica che $M \models \phi$}
+
+Poiché non esiste alcun elemento che soddisfi il predicato $\mathrm{Studente}$, l'antecedente della formula
+\[
+\mathrm{Studente}(x) \land \mathrm{Esame}(y) \land \left(\mathrm{Ansioso}(x) \lor \neg \mathrm{StudiaProgramma}(x,y)\right)
+\]
+è sempre falso per ogni scelta di $x$ e $y$. Di conseguenza, l'implicazione presente in $\phi$ risulta vera per ogni scelta di $x$ e $y$.
+
+Pertanto, $M \models \phi$.
+
+\newpage
+
+\subsection*{1.3 Non-modello $I$ di $\phi$}
+
+Consideriamo l'interpretazione $I$ con:
+\begin{itemize}
+  \item Dominio = $\{\mathrm{pino}, \mathrm{AI}\}$
+\end{itemize}
+
+\paragraph{Interpretazione}
+\begin{itemize}
+  \item $\mathrm{Studente}^I = \{\mathrm{pino}\}$
+  \item $\mathrm{Esame}^I = \{\mathrm{AI}\}$
+  \item $\mathrm{Ansioso}^I = \{\mathrm{pino}\}$
+  \item $\mathrm{StudiaProgramma}^I = \varnothing$
+  \item $\mathrm{Supera}^I = \{(\mathrm{pino}, \mathrm{AI})\}$
+\end{itemize}
+
+\paragraph{Verifica che $I \not\models \phi$}
+
+Per $x=\mathrm{pino}$ e $y=\mathrm{AI}$ si ha:
+\[
+\left(
+  \mathrm{Studente}(\mathrm{pino})
+  \land
+  \mathrm{Esame}(\mathrm{AI})
+  \land
+  \left(
+    \mathrm{Ansioso}(\mathrm{pino})
+    \lor
+    \neg \mathrm{StudiaProgramma}(\mathrm{pino},\mathrm{AI})
+  \right)
+\right)
+\Rightarrow
+\neg \mathrm{Supera}(\mathrm{pino},\mathrm{AI})
+\]
+L'antecedente dell'implicazione è vero, ma il conseguente
+\[
+\neg \mathrm{Supera}(\mathrm{pino},\mathrm{AI})
+\]
+è falso poiché $(\mathrm{pino}, \mathrm{AI}) \in \mathrm{Supera}^I$. Pertanto l'implicazione è falsa.
+
+Pertanto, $I \not\models \phi$.
+
+
+\end{document}
