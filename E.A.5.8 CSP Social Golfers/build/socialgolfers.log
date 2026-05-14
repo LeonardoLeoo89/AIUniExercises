@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=pdflatex 2026.5.11)  14 MAY 2026 20:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=pdflatex 2026.5.11)  14 MAY 2026 22:40
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"/home/leopr/IdeaProjects/AIUniExercises/E.B.1.1 FOL Studenti Ansiosi modelling/folstudentiansiosi.tex"
-(/home/leopr/IdeaProjects/AIUniExercises/E.B.1.1 FOL Studenti Ansiosi modelling/folstudentiansiosi.tex
+**"/home/leopr/IdeaProjects/AIUniExercises/E.A.5.8 CSP Social Golfers/socialgolfers.tex"
+(/home/leopr/IdeaProjects/AIUniExercises/E.A.5.8 CSP Social Golfers/socialgolfers.tex
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
 (/usr/share/texmf-dist/tex/latex/base/article.cls
@@ -215,8 +215,8 @@ Package: listings 2025/11/14 1.11b (Carsten Heinz)
 (/usr/share/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count312
-) (build/folstudentiansiosi.aux)
-\openout1 = `folstudentiansiosi.aux'.
+) (build/socialgolfers.aux)
+\openout1 = `socialgolfers.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
 LaTeX Font Info:    ... okay on input line 37.
@@ -299,37 +299,30 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 LaTeX Warning: No \author given.
 
-
-Overfull \hbox (14.69095pt too wide) detected at line 70
-\OML/cmm/m/it/10.95 ^^^ \OT1/cmr/m/n/10.95 = \OMS/cmsy/m/n/10.95 8\OML/cmm/m/it/10.95 x \OMS/cmsy/m/n/10.95 8\OML/cmm/m/it/10.95 y  []
- []
-
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
-Overfull \hbox (217.02562pt too wide) detected at line 135
-[] \OMS/cmsy/m/n/10.95 ) :[]\OT1/cmr/m/n/10.95 ([]\OML/cmm/m/it/10.95 ; []\OT1/cmr/m/n/10.95 )
- []
-
-[3] (build/folstudentiansiosi.aux)
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 131.
+ [3] (build/socialgolfers.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 6700 strings out of 469504
- 98202 string characters out of 5470379
- 524635 words of memory out of 5000000
- 35291 multiletter control sequences out of 15000+600000
- 640347 words of font info for 73 fonts, out of 8000000 for 9000
+ 7006 strings out of 469504
+ 100557 string characters out of 5470379
+ 696624 words of memory out of 5000000
+ 35595 multiletter control sequences out of 15000+600000
+ 641383 words of font info for 75 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 57i,6n,65p,316b,266s stack positions out of 10000i,1000n,20000p,200000b,200000s
- </home/leopr/.texlive/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk> </home/leopr/.texlive/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1095.600pk> </home/leopr/.texlive/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/leopr/.texlive/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1095.600pk> </home/leopr/.texlive/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.600pk> </home/leopr/.texlive/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/leopr/.texlive/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on build/folstudentiansiosi.pdf (3 pages, 94020 bytes).
+ 57i,9n,65p,386b,1176s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ </home/leopr/.texlive/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk> </home/leopr/.texlive/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0600.600pk> </home/leopr/.texlive/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1095.600pk> </home/leopr/.texlive/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/leopr/.texlive/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1095.600pk> </home/leopr/.texlive/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.600pk> </home/leopr/.texlive/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on build/socialgolfers.pdf (3 pages, 121282 bytes).
 PDF statistics:
- 194 PDF objects out of 1000 (max. 8388607)
- 54 compressed objects within 1 object stream
+ 246 PDF objects out of 1000 (max. 8388607)
+ 57 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

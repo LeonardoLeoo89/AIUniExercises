@@ -1,0 +1,161 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{listings}
+\geometry{margin=2.5cm}
+
+\lstdefinelanguage{MiniZinc}{
+  morekeywords={int,set,of,array,var,constraint,include,solve,satisfy,output,show},
+  sensitive=true,
+  morecomment=[l]{\%},
+  morestring=[b]"
+}
+
+\lstset{
+  language=MiniZinc,
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{teal!70!black}\itshape,
+  stringstyle=\color{orange!70!black},
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  stepnumber=1,
+  numbersep=8pt,
+  showstringspaces=false,
+  frame=single,
+  breaklines=true
+}
+
+\title{CSP: Social golfers }
+\date{}
+
+\begin{document}
+\maketitle
+
+Si consideri il seguente problema, noto come \emph{Social golfers}.
+Un circolo di golf vuole pianificare delle partite tra i suoi $P$ soci (players). La pianificazione deve essere relativa a $W$ settimane (weeks), in ognuna delle quali i soci vengono divisi in $G$ gruppi (groups) di uguale grandezza $S = |P|/G$ (size).
+Lo scopo del torneo è quello di massimizzare le opportunità dei soci di incrementare la loro socialità. In particolare, si vuole fare in modo che ogni coppia di soci giochi nello stesso gruppo al più una volta.
+
+\subsection*{1.1 Modellazione} 
+Una formulazione CSP ad alto livello è la seguente.
+
+\paragraph{Variabili}
+Definiamo una variabile X, che indica il gruppo a cui ogni socio è assegnato in ogni settimana:
+\[
+X = \{x_{i,j} \mid i \in \{1, \ldots, P\}, j \in \{1, \ldots, W\}\},
+\]
+Dove $i$ rappresenta il socio e $j$ rappresenta la settimana. 
+
+\paragraph{Domini}
+\[
+\forall x \in X:\quad D(x)=\{1,\ldots,G\}.
+\]
+
+\paragraph{Vincoli}
+
+Vincolo di dimensione dei gruppi (ogni gruppo ha P/G persone):
+
+\[ C_j = \langle (X_{1,j}, \dots, X_{P,j}), \{ (v_1, \dots, v_P) \mid \forall g \in \{1, \dots, G\}, |\{i \mid v_i = g\}| = P/G \} \rangle \]
+
+Vincolo di socialità (ogni coppia di soci gioca insieme al più una volta):
+
+\[
+\begin{aligned}
+C_{soc} = \langle (X_{1,1}, \dots, X_{P,W}), \{ (v_{1,1}, \dots, v_{P,W}) \mid & \forall i_1, i_2 \in \{1, \dots, P\} \text{ con } i_1 < i_2, \\
+& \forall j_1, j_2 \in \{1, \dots, W\} \text{ con } j_1 < j_2, \\
+& (v_{i_1,j_1} = v_{i_2,j_1}) \implies (v_{i_1,j_2} \neq v_{i_2,j_2}) \} \rangle
+\end{aligned}
+\]
+
+Questo vincolo assicura che se due soci giocano insieme in una settimana, non possono giocare insieme in nessun'altra settimana.
+
+
+L'insieme totale dei vincoli del CSP è:
+\[
+C = \{ C_j \mid j \in \{1, \dots, W\} \} \cup \{ C_{soc} \}
+\]
+
+\newpage
+
+\subsection*{1.2 Istanziazione per (P, G, W) = (4, 2, 2)}
+
+\paragraph{Variabili}
+\[
+X = (X_{1,1}, X_{2,1}, X_{3,1}, X_{4,1}, X_{1,2}, X_{2,2}, X_{3,2}, X_{4,2})
+\]
+
+\paragraph{Domini}
+\[
+\forall i \in \{1, 2, 3, 4\}, \forall j \in \{1, 2\}:\quad D(X_{i,j}) = \{1, 2\}
+\]
+
+\paragraph{Vincoli}
+
+Esplicitiamo i vincoli $C_1$ e $C_2$ (dimensione dei gruppi per le settimane 1 e 2), indicando tutte le combinazioni valide che assegnano esattamente due giocatori al gruppo 1 e due giocatori al gruppo 2:
+\[
+C_1 = \langle (X_{1,1}, X_{2,1}, X_{3,1}, X_{4,1}), \left\{ 
+\begin{array}{l}
+(1, 1, 2, 2), (1, 2, 1, 2), (1, 2, 2, 1), \\
+(2, 1, 1, 2), (2, 1, 2, 1), (2, 2, 1, 1)
+\end{array}
+\right\} \rangle
+\]
+
+\[
+C_2 = \langle (X_{1,2}, X_{2,2}, X_{3,2}, X_{4,2}), \left\{ 
+\begin{array}{l}
+(1, 1, 2, 2), (1, 2, 1, 2), (1, 2, 2, 1), \\
+(2, 1, 1, 2), (2, 1, 2, 1), (2, 2, 1, 1)
+\end{array}
+\right\} \rangle
+\]
+
+Esplicitiamo il vincolo  $C_{soc}$, adattando la condizione logica per le due settimane:
+\[
+C_{soc} = \langle (X_{1,1}, \ldots, X_{4,2}), \left\{ (v_{1,1}, \ldots, v_{4,2}) \mathrel{\Big|}
+\begin{array}{l}
+\forall i_1, i_2 \in \{1, 2, 3, 4\} \text{ con } i_1 < i_2, \\
+(v_{i_1,1} = v_{i_2,1}) \implies (v_{i_1,2} \neq v_{i_2,2})
+\end{array}
+\right\} \rangle
+\]
+\newpage
+
+\subsection*{1.3 Codifica in MiniZinc}
+\begin{lstlisting}
+int: P;
+int: G;
+int: W;
+
+array[1..P, 1..W] of var 1..G: X;
+
+constraint forall(v in 1..G)(
+    forall(j in 1..W)(
+        sum(i in 1..P)(X[i,j] == v) == P div G
+    )
+);
+
+constraint forall(i1, i2 in 1..P where i1 < i2)(
+    forall(j1, j2 in 1..W where j1 < j2)(
+        X[i1,j1] == X[i2,j1] -> X[i1,j2] != X[i2,j2]
+    )
+);
+
+solve satisfy;
+
+output [
+    if j == 1 then "Giocatore " ++ show(i) ++ ":\t" else "" endif ++
+    show(X[i,j]) ++ 
+    if j == W then "\n" else "\t" endif
+    | i in 1..P, j in 1..W
+];
+\end{lstlisting}
+
+
+
+\end{document}
