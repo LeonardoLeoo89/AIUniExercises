@@ -24,3 +24,8 @@ Collection of exercises for Artificial Intelligence course
 
 * [`E.B.1.1 FOL Studenti Ansiosi modelling`](E.B.1.1%20FOL%20Studenti%20Ansiosi%20modelling/): FOL modelling of anxious students
 
+* [`E.A.6.9 SAT Cards`](E.A.6.9%20SAT%20Cards/): Cards problem modeled as SAT
+
+* [`E.B.2.1 PDDL Hanoi`](E.B.2.1%20PDDL%20Hanoi/): Hanoi problem modeled in PDDL
+
+* [`E.B.1.3 FOL Aldo`](E.B.1.3%20FOL%20Aldo/): FOL modelling of Aldo problem

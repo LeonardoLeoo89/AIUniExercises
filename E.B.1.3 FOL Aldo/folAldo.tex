@@ -1,0 +1,147 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{listings}
+\geometry{margin=2.5cm}
+
+\lstdefinelanguage{MiniZinc}{
+  morekeywords={int,set,of,array,var,constraint,include,solve,satisfy,output,show},
+  sensitive=true,
+  morecomment=[l]{\%},
+  morestring=[b]"
+}
+
+\lstset{
+  language=MiniZinc,
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{teal!70!black}\itshape,
+  stringstyle=\color{orange!70!black},
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  stepnumber=1,
+  numbersep=8pt,
+  showstringspaces=false,
+  frame=single,
+  breaklines=true
+}
+
+\title{FOL: Aldo}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Problema}
+Modellare mediante una formula $\phi$ in logica del primo ordine le seguenti affermazioni:
+\begin{quote}
+\textit{I cani da caccia abbaiano di notte. Chi possiede gatti non può avere topi in casa.
+Chi ha il sonno leggero non può possedere nessun animale che abbaia di notte.
+Aldo possiede un gatto oppure un cane da caccia.}
+\end{quote}
+
+\subsection*{1.1 Modellazione}
+
+\paragraph{Costanti e Predicati}
+\begin{itemize}
+  \item $Aldo$: Aldo
+  \item $Cane(x)$: $x$ è un cane da caccia
+  \item $Gatto(x)$: $x$ è un gatto
+  \item $Topo(x)$: $x$ è un topo
+  \item $Animale(x)$: $x$ è un animale
+  \item $Abbaia(x)$: $x$ abbaia di notte
+  \item $SonnoLeggero(x)$: $x$ ha il sonno leggero
+  \item $Possiede(x, y)$: $x$ possiede (o ha in casa) $y$
+\end{itemize}
+
+\paragraph{Formula}
+La formula $\phi$ è data dalla congiunzione delle singole affermazioni:
+\[
+\phi \equiv \phi_1 \land \phi_2 \land \phi_3 \land \phi_4 \land \phi_5
+\]
+dove:
+    
+I cani da caccia abbaiano di notte:
+\[\phi_1 = \forall x \, (Cane(x) \Rightarrow Abbaia(x))\]
+
+Chi possiede gatti non può avere topi in casa:
+\[\phi_2 = \forall x \, ((\exists y \, (Gatto(y) \land Possiede(x, y))) \Rightarrow \neg \exists z \, (Topo(z) \land Possiede(x, z)))\]
+
+Chi ha il sonno leggero non può possedere nessun animale che abbaia di notte:
+\[\phi_3 = \forall x \, (SonnoLeggero(x) \Rightarrow \neg \exists y \, (Animale(y) \land Abbaia(y) \land Possiede(x, y)))\]
+
+Aldo possiede un gatto oppure un cane da caccia:
+\[\phi_4 = (\exists x \, (Gatto(x) \land Possiede(Aldo, x))) \lor (\exists y \, (Cane(y) \land Possiede(Aldo, y)))\]
+
+Tutti i cani da caccia e i gatti sono animali:
+\[\phi_5 = \forall x \, (Cane(x) \Rightarrow Animale(x)) \land \forall x \, (Gatto(x) \Rightarrow Animale(x))\]
+
+
+\newpage
+
+\subsection*{1.2 Modello $M$ di $\phi$}
+
+Costruiamo un interpretazione $M$ che renda vera la formula $\phi$.
+
+\paragraph{Dominio e interpretazione}
+Scegliamo il dominio $D^M = \{\mathrm{Aldo}, \mathrm{Spillo}\}$.
+\begin{itemize}
+  \item $Aldo^M = \mathrm{Aldo}$
+  \item $Cane^M = \varnothing$
+  \item $Gatto^M = \{\mathrm{Spillo}\}$
+  \item $Topo^M = \varnothing$
+  \item $Animale^M = \{\mathrm{Spillo}\}$
+  \item $Abbaia^M = \varnothing$
+  \item $SonnoLeggero^M = \varnothing$
+  \item $Possiede^M = \{(\mathrm{Aldo}, \mathrm{Spillo})\}$
+\end{itemize}
+
+\paragraph{Verifica che $M \models \phi$}
+\begin{itemize}
+    \item $\phi_1$ è vera perché $Cane^M = \varnothing$ (antecedente falso).
+    \item $\phi_2$ è vera: Aldo possiede un gatto, ma poiché non esistono topi nel dominio ($Topo^M = \varnothing$), la negazione dell esistenza di topi posseduti è vera.
+    \item $\phi_3$ è vera perché $SonnoLeggero^M = \varnothing$ (antecedente falso).
+    \item $\phi_4$ è vera: Aldo possiede $\mathrm{Spillo}$, che è un gatto. Dunque la prima parte dell'OR è soddisfatta.
+    \item $\phi_5$ è vera: l'unico gatto appartiene ad $Animale^M$.
+\end{itemize}
+Poiché tutte le sottoformule sono vere, l'intera congiunzione $\phi$ è vera in $M$. Quindi, $M \models \phi$.
+
+\newpage
+
+\subsection*{1.3 Non-modello $I$ di $\phi$}
+
+Costruiamo un interpretazione $I$ in cui $\phi$ sia falsa, falsificando $\phi_2$.
+
+\paragraph{Dominio e interpretazione}
+Scegliamo il dominio $D^I = \{\mathrm{Aldo}, \mathrm{Spillo}, \mathrm{Topolino}\}$.
+\begin{itemize}
+  \item $Aldo^I = \mathrm{Aldo}$
+  \item $Cane^I = \varnothing$
+  \item $Gatto^I = \{\mathrm{Spillo}\}$
+  \item $Topo^I = \{\mathrm{Topolino}\}$
+  \item $Animale^I = \{\mathrm{Spillo}\}$
+  \item $Abbaia^I = \varnothing$
+  \item $SonnoLeggero^I = \varnothing$
+  \item $Possiede^I = \{(\mathrm{Aldo}, \mathrm{Spillo}), (\mathrm{Aldo}, \mathrm{Topolino})\}$
+\end{itemize}
+
+\paragraph{Verifica che $I \not\models \phi$}
+Analizziamo la formula $\phi_2$:
+\[
+\forall x \, ((\exists y \, (Gatto(y) \land Possiede(x, y))) \Rightarrow \neg \exists z \, (Topo(z) \land Possiede(x, z)))
+\]
+Per $x = \mathrm{Aldo}$:
+\begin{itemize}
+    \item L'antecedente è vero per $y = \mathrm{Spillo}$.
+    \item Il conseguente richiede $\neg \exists z \, (Topo(z) \land Possiede(\mathrm{Aldo}, z))$.
+    \item Tuttavia, per $z = \mathrm{Topolino}$, $Topo^I(\mathrm{Topolino})$ e $Possiede^I(\mathrm{Aldo}, \mathrm{Topolino})$ sono veri.
+    \item Quindi l'esistenza del topo posseduto da Aldo rende il conseguente falso.
+\end{itemize}
+L'implicazione in $\phi_2$ risulta falsa (Vero $\Rightarrow$ Falso). Dunque $\phi$ complessiva è falsa e $I \not\models \phi$.
+
+\end{document}
