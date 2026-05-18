@@ -1,0 +1,80 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\title{PDDL: Domino}
+\date{}
+
+\begin{document}
+\maketitle
+
+\subsection*{1.1 Modellazione del Dominio} 
+
+\paragraph{Predicati}
+\[ P = \{\text{Tessera}/1, \text{Numero}/1, \text{HaValori}/3, \text{Disponibile}/1, \text{EstremitaAperta}/1, \text{TavoloVuoto}/0\} \]
+
+\paragraph{Segnature delle costanti}
+Definiamo le costanti (valori numerici disponibili):
+\[ C = \{1, 2, 3, 4, 5, 6\} \]
+
+\paragraph{Azioni}
+
+\begin{itemize}
+    \item \textbf{IniziaGioco}$(t, n_1, n_2)$
+    \begin{itemize}
+        \item $Pre: \text{Tessera}(t) \land \text{Numero}(n_1) \land \text{Numero}(n_2) \land \text{TavoloVuoto}() \land \text{Disponibile}(t) \land \text{HaValori}(t, n_1, n_2)$
+        \item $Eff: \neg \text{TavoloVuoto}() \land \neg \text{Disponibile}(t) \land \text{EstremitaAperta}(n_2)$
+    \end{itemize}
+    \vspace{0.2cm}
+    \item \textbf{IniziaGiocoRuotata}$(t, n_1, n_2)$
+    \begin{itemize}
+        \item $Pre: \text{Tessera}(t) \land \text{Numero}(n_1) \land \text{Numero}(n_2) \land \text{TavoloVuoto}() \land \text{Disponibile}(t) \land \text{HaValori}(t, n_1, n_2)$
+        \item $Eff: \neg \text{TavoloVuoto}() \land \neg \text{Disponibile}(t) \land \text{EstremitaAperta}(n_1)$
+    \end{itemize}
+    \vspace{0.2cm}
+    \item \textbf{GiocaTessera}$(t, n_{match}, n_{new})$
+    \begin{itemize}
+        \item $Pre: \text{Tessera}(t) \land \text{Numero}(n_{match}) \land \text{Numero}(n_{new}) \land \text{Disponibile}(t) \land \text{EstremitaAperta}(n_{match}) \land \text{HaValori}(t, n_{match}, n_{new})$
+        \item $Eff: \neg \text{Disponibile}(t) \land \neg \text{EstremitaAperta}(n_{match}) \land \text{EstremitaAperta}(n_{new})$
+    \end{itemize}
+    \vspace{0.2cm}
+    \item \textbf{GiocaTesseraRuotata}$(t, n_{match}, n_{new})$
+    \begin{itemize}
+        \item $Pre: \text{Tessera}(t) \land \text{Numero}(n_{match}) \land \text{Numero}(n_{new}) \land \text{Disponibile}(t) \land \text{EstremitaAperta}(n_{match}) \land \text{HaValori}(t, n_{new}, n_{match})$
+        \item $Eff: \neg \text{Disponibile}(t) \land \neg \text{EstremitaAperta}(n_{match}) \land \text{EstremitaAperta}(n_{new})$
+    \end{itemize}
+\end{itemize}
+
+\newpage
+
+\subsection*{1.2 Istanziazione specifica}
+
+\paragraph{Istanziazione (Oggetti)}
+\[ F = \{ t_1, t_2, t_3, t_4, t_5, t_6 \} \]
+
+\paragraph{Stato Iniziale}
+\[
+\begin{aligned}
+I = & \text{Tessera}(t_1) \land \text{Tessera}(t_2) \land \text{Tessera}(t_3) \land \text{Tessera}(t_4) \land \text{Tessera}(t_5) \land \text{Tessera}(t_6) \land \\
+& \text{Numero}(1) \land \text{Numero}(2) \land \text{Numero}(3) \land \text{Numero}(4) \land \text{Numero}(5) \land \text{Numero}(6) \land \\
+& \text{HaValori}(t_1, 1, 2) \land \text{HaValori}(t_2, 1, 2) \land \text{HaValori}(t_3, 1, 3) \land \\
+& \text{HaValori}(t_4, 3, 1) \land \text{HaValori}(t_5, 2, 4) \land \text{HaValori}(t_6, 2, 5) \land \\
+& \text{Disponibile}(t_1) \land \text{Disponibile}(t_2) \land \text{Disponibile}(t_3) \land \\
+& \text{Disponibile}(t_4) \land \text{Disponibile}(t_5) \land \text{Disponibile}(t_6) \land \\
+& \text{TavoloVuoto}()
+\end{aligned}
+\]
+
+\paragraph{Obiettivo}
+\[
+\begin{aligned}
+G = & \neg \text{Disponibile}(t_1) \land \neg \text{Disponibile}(t_2) \land \neg \text{Disponibile}(t_3) \\
+    & \land \neg \text{Disponibile}(t_4) \land \neg \text{Disponibile}(t_5) \land \neg \text{Disponibile}(t_6)
+\end{aligned}
+\]
+
+\end{document}

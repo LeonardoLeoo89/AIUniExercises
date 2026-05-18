@@ -1,0 +1,57 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\title{PDDL: Torri di Hanoi}
+\date{}
+
+\begin{document}
+\maketitle
+
+\subsection*{1.1 Modellazione del Dominio} 
+
+\paragraph{Predicati}
+\[ P = \{\text{Asse}/1, \text{Disco}/1, \text{smaller}/2, \text{free}/1, \text{diskOn}/2\} \]
+
+\paragraph{Azioni}
+
+\begin{itemize}
+    \item \textbf{Sposta}$(x, y', y)$
+    \begin{itemize}
+        \item $Pre: \text{Disco}(x) \land \text{free}(x) \land \text{free}(y) \land \text{diskOn}(x, y') \land (y \neq y') \land \text{smaller}(x, y)$
+        \item $Eff: \neg \text{free}(y) \land \text{diskOn}(x, y) \land \neg \text{diskOn}(x, y') \land \text{free}(y')$
+    \end{itemize}
+\end{itemize}
+
+\subsection*{1.2 Istanziazione specifica}
+
+\paragraph{Istanziazione (Oggetti)}
+\[ F = \{ d_1, d_2, d_3, d_4, A, B, C \} \]
+
+\paragraph{Stato Iniziale}
+\[
+\begin{aligned}
+I = & \text{Asse}(A) \land \text{Asse}(B) \land \text{Asse}(C) \land \\
+& \text{Disco}(d_1) \land \text{Disco}(d_2) \land \text{Disco}(d_3) \land \text{Disco}(d_4) \land \\
+& \text{smaller}(d_1, d_2) \land \text{smaller}(d_1, d_3) \land \text{smaller}(d_1, d_4) \land \\
+& \text{smaller}(d_2, d_3) \land \text{smaller}(d_2, d_4) \land \text{smaller}(d_3, d_4) \land \\
+& \text{smaller}(d_1, A) \land \text{smaller}(d_2, A) \land \text{smaller}(d_3, A) \land \text{smaller}(d_4, A) \land \\
+& \text{smaller}(d_1, B) \land \text{smaller}(d_2, B) \land \text{smaller}(d_3, B) \land \text{smaller}(d_4, B) \land \\
+& \text{smaller}(d_1, C) \land \text{smaller}(d_2, C) \land \text{smaller}(d_3, C) \land \text{smaller}(d_4, C) \land \\
+& \text{free}(d_1) \land \text{free}(B) \land \text{free}(C) \land \\
+& \text{diskOn}(d_4, A) \land \text{diskOn}(d_3, d_4) \land \text{diskOn}(d_2, d_3) \land \text{diskOn}(d_1, d_2)
+\end{aligned}
+\]
+
+\paragraph{Obiettivo}
+\[
+\begin{aligned}
+G = & \text{diskOn}(d_4, B) \land \text{diskOn}(d_3, d_4) \land \text{diskOn}(d_2, d_3) \land \text{diskOn}(d_1, d_2)
+\end{aligned}
+\]
+
+\end{document}
